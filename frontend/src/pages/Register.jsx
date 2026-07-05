@@ -23,7 +23,7 @@ const Register = () => {
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="flex justify-center mb-4">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Pinterest-logo.png/600px-Pinterest-logo.png"
+            src="https://commons.wikimedia.org/wiki/File:Pinterest.svg"
             alt="Pinterest"
             className="h-12"
           />
