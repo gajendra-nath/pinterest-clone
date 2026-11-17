@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import { v2 as cloudinary } from "cloudinary";
 import path from "path";
 import fs from "fs";
+import cors from "cors";
 
 import connectDb from "./database/db.js";
 import userRoutes from "./routes/userRoutes.js";
@@ -24,6 +25,12 @@ const port = process.env.PORT;
 // using middlewares
 app.use(express.json());
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
 
 // using routes
 app.use("/api/user", userRoutes);
