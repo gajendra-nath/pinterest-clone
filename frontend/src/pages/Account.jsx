@@ -51,11 +51,11 @@ const Account = ({ user }) => {
             </button>
           </div>
 
-          <div className="mt-4 flex flex-wrap justify-center gap-4">
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-6xl mx-auto px-4">
             {userPins && userPins.length > 0 ? (
               userPins.map((e) => <PinCard key={e._id} pin={e} />)
             ) : (
-              <p>No Pin Yet</p>
+              <p className="text-gray-500 text-center col-span-full py-10">No Pin Yet</p>
             )}
           </div>
         </div>
