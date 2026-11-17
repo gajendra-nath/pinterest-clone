@@ -21,4 +21,5 @@ router.delete("/:id", isAuth, deletePin);
 router.post("/comment/:id", isAuth, commentOnPin);
 router.delete("/comment/:id", isAuth, deleteComment);
 
+export { router as pinRoutes };
 export default router;

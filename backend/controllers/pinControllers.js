@@ -1,7 +1,7 @@
 import { Pin } from "../models/pinModel.js";
 import TryCatch from "../utils/TryCatch.js";
 import getDataUrl from "../utils/urlGenerator.js";
-import cloudinary from "cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 
 export const createPin = TryCatch(async (req, res) => {
   const { title, pin } = req.body;
@@ -9,7 +9,7 @@ export const createPin = TryCatch(async (req, res) => {
   const file = req.file;
   const fileUrl = getDataUrl(file);
 
-  const cloud = await cloudinary.v2.uploader.upload(fileUrl.content);
+  const cloud = await cloudinary.uploader.upload(fileUrl.content);
 
   await Pin.create({
     title,
@@ -112,7 +112,7 @@ export const deletePin = TryCatch(async (req, res) => {
       message: "Unauthorized",
     });
 
-  await cloudinary.v2.uploader.destroy(pin.image.id);
+  await cloudinary.uploader.destroy(pin.image.id);
 
   await pin.deleteOne();
 
@@ -143,3 +143,13 @@ export const updatePin = TryCatch(async (req, res) => {
     message: "Pin updated",
   });
 });
+
+export default {
+  createPin,
+  getAllPins,
+  getSinglePin,
+  commentOnPin,
+  deleteComment,
+  deletePin,
+  updatePin,
+};

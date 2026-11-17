@@ -42,3 +42,4 @@ const schema = new mongoose.Schema(
 );
 
 export const Pin = mongoose.model("Pin", schema);
+export default Pin;

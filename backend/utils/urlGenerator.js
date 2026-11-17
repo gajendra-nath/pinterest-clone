@@ -8,4 +8,5 @@ const getDataUrl = (file) => {
   return parser.format(extName, file.buffer);
 };
 
+export { getDataUrl };
 export default getDataUrl;

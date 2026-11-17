@@ -112,3 +112,12 @@ export const logOutUser = TryCatch(async (req, res) => {
     message: "Logged Out Successfully",
   });
 });
+
+export default {
+  registerUser,
+  loginUser,
+  myProfile,
+  userProfile,
+  followAndUnfollowUser,
+  logOutUser,
+};

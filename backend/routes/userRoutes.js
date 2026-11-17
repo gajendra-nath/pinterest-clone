@@ -18,4 +18,5 @@ router.get("/me", isAuth, myProfile);
 router.get("/:id", isAuth, userProfile);
 router.post("/follow/:id", isAuth, followAndUnfollowUser);
 
+export { router as userRoutes };
 export default router;
