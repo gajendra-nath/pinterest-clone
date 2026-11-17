@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import { v2 as cloudinary } from "cloudinary";
 import path from "path";
+import fs from "fs";
 
 import connectDb from "./database/db.js";
 import userRoutes from "./routes/userRoutes.js";
@@ -28,12 +29,14 @@ app.use(cookieParser());
 app.use("/api/user", userRoutes);
 app.use("/api/pin", pinRoutes);
 
-const __dirname = path.resolve();
+const frontendDist = fs.existsSync(path.resolve("frontend/dist"))
+  ? path.resolve("frontend/dist")
+  : path.resolve("../frontend/dist");
 
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.use(express.static(frontendDist));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+  res.sendFile(path.join(frontendDist, "index.html"));
 });
 
 app.listen(port, () => {
